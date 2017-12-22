@@ -39,7 +39,10 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 */
 
-#pragma once
+#ifndef _DEV_VECTOR_H
+#define _DEV_VECTOR_H
+
+#include "basic_defs.h"
 
 ////////////////////////////////////////////////////////////////// DevVector //
 template< typename T > 
@@ -268,8 +271,6 @@ public:
 typedef DevVector< char >     CharDVec;
 typedef DevVector< int >      IntDVec;
 typedef DevVector< int2 >     Int2DVec;
-typedef DevVector< TetPoint3 >   Point3DVec;
-typedef DevVector< Tet >      TetDVec;
-typedef DevVector< TetOpp >   TetOppDVec;
-typedef DevVector< FlipItem > FlipDVec; 
+
+#endif // _DEV_VECTOR_H
 
