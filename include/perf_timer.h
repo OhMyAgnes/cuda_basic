@@ -22,14 +22,14 @@ private:
 	bool smartType;
 	
 public:
-	TimerCounter(void)//构造函数
+	PerfTimer(void)//构造函数
 	{
 		smartType = false;
 		QueryPerformanceFrequency(&freq);//获取主机CPU时钟频率
 		leftover = 0;
 	}
 	
-	TimerCounter(const char * input)//构造函数
+	PerfTimer(const char * input)//构造函数
 	{
 		smartType = true;
 		str = input;
@@ -39,13 +39,13 @@ public:
 		Start();
 	}
 	
-	~TimerCounter(void) //析构函数
+	~PerfTimer(void) //析构函数
 	{
 		if (smartType)
 		{
 			Stop();
-			ostringstream os;
-			os << str << ": " << GetElapsedTime() << "ms" << endl;;
+			std::ostringstream os;
+			os << str << ": " << GetElapsedTime() << "ms" << std::endl;;
 			printf(os.str().data());
 		}
 	}
@@ -108,13 +108,13 @@ private:
     }
 	
 public:
-	TimerCounter(void)//构造函数
+	PerfTimer(void)//构造函数
 	{
 		smartType = false;
 		leftover = 0;
 	}
 	
-	TimerCounter(const char * input)//构造函数
+	PerfTimer(const char * input)//构造函数
 	{
 		smartType = true;
 		str = input;
@@ -123,7 +123,7 @@ public:
 		Start();
 	}
 	
-	~TimerCounter(void) //析构函数
+	~PerfTimer(void) //析构函数
 	{
 		if (smartType)
 		{

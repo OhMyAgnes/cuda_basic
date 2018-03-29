@@ -43,7 +43,7 @@ DAMAGE.
 #define _DEV_VECTOR_H
 
 #include "basic_defs.h"
-
+#include "cuda_wrapper.h"
 ////////////////////////////////////////////////////////////////// DevVector //
 template< typename T > 
 class DevVector
@@ -150,7 +150,7 @@ public:
             // output an error message and exit
             const int OneMB = ( 1 << 20 );
             std::cerr << "thrust::device_malloc failed to allocate " << (sizeof( T ) * _capacity) / OneMB << " MB!" << std::endl;
-			LOG_ERROR("thrust::device_malloc failed to allocate %.3f MB!", (sizeof(T) * _capacity) / OneMB);
+			//LOG_ERROR("thrust::device_malloc failed to allocate %.3f MB!", (sizeof(T) * _capacity) / OneMB);
             std::cerr << "size = " << _size << " sizeof(T) = " << sizeof( T ) << std::endl; 
             exit( -1 );
         }
@@ -271,6 +271,12 @@ public:
 typedef DevVector< char >     CharDVec;
 typedef DevVector< int >      IntDVec;
 typedef DevVector< int2 >     Int2DVec;
+
+template < typename T >
+T* toKernelPtr(DevVector< T >& dVec)
+{
+	return thrust::raw_pointer_cast(&dVec[0]);
+}
 
 #endif // _DEV_VECTOR_H
 
