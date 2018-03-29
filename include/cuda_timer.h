@@ -6,19 +6,19 @@
 class CudaTimer : public PerfTimer
 {
 public:
-    void start()
+    void Start()
     {
         CudaSafeCall(cudaDeviceSynchronize());
         PerfTimer::Start();
     }
 
-    void stop()
+    void Stop()
     {
         CudaSafeCall(cudaDeviceSynchronize());
         PerfTimer::Stop();
     }
 
-    void pause()
+    void Pause()
     {
         CudaSafeCall(cudaDeviceSynchronize());
         PerfTimer::Pause();
